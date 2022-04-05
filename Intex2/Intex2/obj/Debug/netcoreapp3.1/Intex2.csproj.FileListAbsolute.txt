@@ -190,3 +190,4 @@ C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\obj\
 C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\obj\Debug\netcoreapp3.1\Intex2.pdb
 C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\obj\Debug\netcoreapp3.1\Intex2.genruntimeconfig.cache
 C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\obj\Debug\netcoreapp3.1\Razor\Views\Home\ViewCrashes.cshtml.g.cs
