@@ -6,12 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
-    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
-    <None Remove="Areas\Identity\Data\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
@@ -21,19 +15,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.23">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-    <Folder Include="wwwroot\lib\qrcode\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="wwwroot\lib\qrcode\" />
-  </ItemGroup>
 </Project>
