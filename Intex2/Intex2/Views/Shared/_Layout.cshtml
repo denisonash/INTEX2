@@ -117,6 +117,8 @@
                         </li>
                     </ul>
                 </div>
+                <partial name="_LoginPartial" />
+
             </nav>
             <!-- /main nav -->
         </div>
@@ -212,5 +214,6 @@
     <!-- Custom js -->
     <script src="~/js/script.js"></script>
 
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
