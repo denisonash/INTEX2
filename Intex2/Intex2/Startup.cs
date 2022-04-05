@@ -58,6 +58,14 @@ namespace Intex2
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            //CSP Header, we can mess with this later to be able to load the whole site
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.jsdelivr.net;");
+                await next();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
