@@ -1,20 +1,50 @@
 ﻿<Properties StartupConfiguration="{C4E78949-79AA-4EBD-9A9D-E342036A5616}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Intex2/Views/Home/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Intex2/Areas/Identity/Pages/_ViewStart.cshtml">
     <Files>
-      <File FileName="Intex2/Views/Shared/_Layout.cshtml" Line="217" Column="1" />
+      <File FileName="Intex2/Views/Shared/_Layout.cshtml" Line="121" Column="17" />
       <File FileName="Intex2/Views/Home/Index.cshtml" Line="367" Column="32" />
+      <File FileName="Intex2/appsettings.json" Line="1" Column="1" />
+      <File FileName="Intex2/Startup.cs" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml" Line="1" Column="17" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml.cs" Line="1" Column="1" />
+      <File FileName="Intex2/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Intex2/Views/Shared/_LoginPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/Manage/ManageNavPages.cs" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" Line="16" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/Account/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Intex2/Areas/Identity/Pages/_ViewStart.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Intex2" expanded="True">
             <Node name="Intex2" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="Identity" expanded="True">
+                  <Node name="Pages" expanded="True">
+                    <Node name="Account" expanded="True">
+                      <Node name="Manage" expanded="True">
+                        <Node name="EnableAuthenticator.cshtml" expanded="True" />
+                      </Node>
+                    </Node>
+                    <Node name="_ViewStart.cshtml" selected="True" />
+                  </Node>
                 </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True">
+                <Node name="Migrations" expanded="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
+              <Node name="wwwroot" expanded="True" />
             </Node>
           </Node>
         </State>
