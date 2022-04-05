@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{C4E78949-79AA-4EBD-9A9D-E342036A5616}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Intex2/Views/Home/Index.cshtml">
+    <Files>
+      <File FileName="Intex2/Views/Shared/_Layout.cshtml" Line="217" Column="1" />
+      <File FileName="Intex2/Views/Home/Index.cshtml" Line="367" Column="32" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Intex2" expanded="True">
+            <Node name="Intex2" expanded="True">
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Intex2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
