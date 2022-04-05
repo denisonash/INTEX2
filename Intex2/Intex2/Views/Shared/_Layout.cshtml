@@ -35,6 +35,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/css/style.css">
 
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 </head>
 
 <body id="body">
@@ -63,9 +64,11 @@
             <!-- main nav -->
             <nav class="navbar navbar-expand-lg navbar-light">
                 <!-- logo -->
-                <a class="navbar-brand logo" href="index.html">
-                    <img class="logo-default" src="images/logo.png" alt="logo" />
-                    <img class="logo-white" src="images/logo-white.png" alt="logo" />
+                <a class="navbar-brand logo" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-car-burst" style="color:white"></i>
+                    
+                    @*<img class="logo-default" src="C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\wwwroot\img\logo.png" alt="logo" />
+                    <img class="logo-white" src="https://previews.123rf.com/images/vectorstockcompa…%A9-sur-fond-transparent-concept-logo-voiture.jpg" alt="logo" />*@
                 </a>
                 <!-- /logo -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -125,11 +128,10 @@
     End Fixed Navigation
     ==================================== -->
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        
+ @RenderBody()
+       
+
 
     <footer id="footer" class="bg-one">
         <div class="top-footer">
