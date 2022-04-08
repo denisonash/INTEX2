@@ -3,6 +3,7 @@
 *@
 @{     ViewData["Title"] = "Results of the Simulation";
 }
+<!-- This page displays the result of the simulator-->
 <div class="text-center">
     <br />
     <br />
@@ -11,15 +12,15 @@
     <h3>Predicted Crash Severity: @ViewBag.result</h3>
     <br />
     @if (ViewBag.result == 1)
-    {
-<p>No Injury</p>
-                <p>
-                    While you have a possible injury, there are several costs that occur when involved in an accident...<br />
-                    -	Your annual insurance premium will go up by an average of $650<br />
-                    -	Your insurance rate will increase by up to $850<br />
-                    -	The average cost to repair a car after an accident is $4,000<br />
-                    The average total cost of this car accident can approach $5,500, <br />so take the proper precautions, drive safely, and reduce the chances that you will incur some financial costs.
-                </p>}
+    {<!-- This is an if statement to determine what shows up for the costs-->
+                <p>No Injury</p>
+                                <p>
+                                    While you have a possible injury, there are several costs that occur when involved in an accident...<br />
+                                    -	Your annual insurance premium will go up by an average of $650<br />
+                                    -	Your insurance rate will increase by up to $850<br />
+                                    -	The average cost to repair a car after an accident is $4,000<br />
+                                    The average total cost of this car accident can approach $5,500, <br />so take the proper precautions, drive safely, and reduce the chances that you will incur some financial costs.
+                                </p>}
     @if (ViewBag.result == 2)
     {
 <p>Possible Injury</p>
@@ -38,7 +39,7 @@
                     You sustained an injury, the following are costs that you will incur...<br />
                     -	A trip to the emergency room in an ambulance will cost around $3,000<br />
                     -	Your annual insurance premium will go up by an average of $650<br />
-                    -	Your insurance rate will increase by up to 850 dollars<br />
+                    -	Your insurance rate will increase by up to $850<br />
                     -	The average cost to repair a car after an accident is $4,000<br />
                     The average total cost of this car accident can approach $8,500, <br />so take the proper precautions, drive safely, and reduce the chances that you will incur financial costs.
                 </p>}
@@ -60,4 +61,9 @@
                 <p>
                     The scenario you have chosen has resulted in a fatality, by making better choices while driving, this scenario could have been avoided and a life would not have been lost. Learn to make better choices and keep Utah safe.
                 </p>}
+
+    <br />
+    <br />
+    <br />
+    <br />
 </div>

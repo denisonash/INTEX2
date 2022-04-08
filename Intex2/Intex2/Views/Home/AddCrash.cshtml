@@ -15,6 +15,7 @@
 <br />
 <br />
 <br />
+<!-- If you are signed in, you are allowed to add an incident. If not, you cannot.-->
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="container-fluid px-1 py-5 mx-auto">
@@ -26,6 +27,7 @@
                     <h5 class="text-center mb-4">Powering our predictions and helping us educate Utah</h5>
                     <div>
                         <form class="form-accident" method="post">
+                            <!-- This is our validation-->
                             <div class="row">
                                 <div asp-validation-summary="All" style="color:red" class="col-md-12"></div>
                             </div>
@@ -46,7 +48,16 @@
                                 <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="city">City:</label><input type="text" asp-for="city" /></div>
                             </div>
                             <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="crash_severity_id">Crash Severity:</label><input min="1" max="5" type="number" asp-for="crash_severity_id" /></div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3" asp-for="crash_severity_id">Crash Severity:</label>
+                                    <select asp-for="crash_severity_id">
+                                        <option value="1">No injury</option>
+                                        <option value="2">Possible Injury</option>
+                                        <option value="3">Suspected Minor Injury</option>
+                                        <option value="4">Suspected Serious Injury</option>
+                                        <option value="5">Fatality</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-6 flex-column d-flex">
@@ -278,5 +289,5 @@ else
         </div>
     </div>
 
-                }
+}
 

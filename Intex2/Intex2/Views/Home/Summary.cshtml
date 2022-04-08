@@ -11,7 +11,8 @@
 <br />
 <br />
 
-
+<!-- This is just a brief summary page so you can see more of the details of an individual row in the database
+    -->
 
 <div class="container jumbotron">
     <h4>
@@ -110,12 +111,16 @@
                 <li>Roadway departure</li>
             }
 
-            if (Model.work_zone_related == "false" && Model.roadway_departure=="false" && Model.pedestrian_involved == "false" && Model.bicyclist_involved == "true" && Model.motorcycle_involved=="false" && Model.commercial_motor_veh_involved=="false" && Model.distracted_driving=="false" && Model.domestic_animal_related=="false" && Model.drowsy_driving=="false" && Model.dui=="false" && Model.improper_restraint=="false" && Model.intersection_related=="false" && Model.night_dark_condition=="false" && Model.older_driver_involved=="false" && Model.overturn_rollover=="false" && Model.single_vehicle=="false" && Model.teenage_driver_involved=="false" && Model.unrestrained=="false" && Model.wild_animal_related=="false")
+            if (Model.work_zone_related == "false" && Model.roadway_departure == "false" && Model.pedestrian_involved == "false" && Model.bicyclist_involved == "true" && Model.motorcycle_involved == "false" && Model.commercial_motor_veh_involved == "false" && Model.distracted_driving == "false" && Model.domestic_animal_related == "false" && Model.drowsy_driving == "false" && Model.dui == "false" && Model.improper_restraint == "false" && Model.intersection_related == "false" && Model.night_dark_condition == "false" && Model.older_driver_involved == "false" && Model.overturn_rollover == "false" && Model.single_vehicle == "false" && Model.teenage_driver_involved == "false" && Model.unrestrained == "false" && Model.wild_animal_related == "false")
             {
                 <li> None of the constraints were involved in the accident. It was fairly minor!</li>
             }
 
         }
     </ul>
-    <a asp-action="ViewCrashes">See All Crashes</a>
+    <br />
+    <br />
+    <br />
+    <br />
+    <a asp-action="ViewCrashes" class="btn btn-primary"> << See All Crashes</a>
 </div>

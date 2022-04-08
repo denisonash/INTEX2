@@ -39,6 +39,7 @@ namespace Intex2.Infrastructure
             TagBuilder final = new TagBuilder("div");
             if (PageModel.CurrentPage > 1)
             {
+                //this is an arrow that will send you back to page one.
                 
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = 1 , city=PageModel.CurrentCity, county=PageModel.CurrentCounty, severity=PageModel.CurrentSeverity});
@@ -52,6 +53,7 @@ namespace Intex2.Infrastructure
             }
             if (PageModel.CurrentPage > 1)
             {
+                //this has a previous page button so you can go backwards easily
                 TagBuilder tb1 = new TagBuilder("a");
                 tb1.Attributes["href"] = uh.Action(PageAction, new { pageNum = PageModel.CurrentPage - 1 , city = PageModel.CurrentCity, county = PageModel.CurrentCounty, severity = PageModel.CurrentSeverity });
                 if (PageClassesEnabled)
@@ -82,6 +84,7 @@ namespace Intex2.Infrastructure
             }
             else
             {
+                //this says that the pagination should not go past the the Total Pages if it is at the end.
                 for (int i = PageModel.CurrentPage; i <= PageModel.TotalPages; i++)
                 {
                     TagBuilder tb = new TagBuilder("a");
@@ -97,7 +100,7 @@ namespace Intex2.Infrastructure
                     final.InnerHtml.AppendHtml(tb);
                 }
             }
-
+            //this sets an arrow to head to the last page
             if (PageModel.CurrentPage > 0)
             {
                 TagBuilder tb = new TagBuilder("a");

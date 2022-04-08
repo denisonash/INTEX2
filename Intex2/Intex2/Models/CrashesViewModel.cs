@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Intex2.Models
 {
+    //combining the List of Crashes and the page info as well as the current filtering information
     public class CrashesViewModel
     {
         public IQueryable<Crash> Crashes { get; set; }

@@ -34,29 +34,36 @@ namespace Intex2
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+            //add identity services
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            //our db connection with the secrets manager
             services.AddDbContext<CrashesDbContext>(options =>
             {
                 options.UseMySql(Environment.GetEnvironmentVariable("DBConnection"));
             });
+            //for the repository
             services.AddScoped<ICrashesRepository, EFCrashesRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //adding a cookie page
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            //adding hsts into the headers
             services.AddHsts(options =>
             {
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(365);
             });
+            //adding the onnx file
             services.AddSingleton<InferenceSession>(
              new InferenceSession("wwwroot/Model/crash_severity.onnx")
             );
+            //adjusting the password setting on the identity
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -99,7 +106,7 @@ namespace Intex2
             app.UseAuthorization();
             app.Use(async (context, next) =>
             {
-                //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' cdn.datatables.net 10az.online.tableau.com cdn.jsdelivr.net udps.numetric.net fonts.googleapis.com fonts.gstatic.com unsplash.com images.unsplash.com;");
+                //this adds in a CSP which controls the sources we allow onto our website
                 context.Response.Headers.Add("Content-Security-Policy", "default-src 'self' 10az.online.tableau.com udps.numetric.net fonts.googleapis.com fonts.gstatic.com; connect-src 'self' 10az.online.tableau.com; style-src 'self' 'unsafe-inline' 10az.online.tableau.com; style-src-elem * 'unsafe-inline'; script-src 'self' 'unsafe-inline' 10az.online.tableau.com maps.googleapis.com; script-src-elem * 'unsafe-inline'; connect-src https://maps.googleapis.com/; frame-src 'self' 10az.online.tableau.com udps.numetric.net public.tableau.com; img-src 'self' 10az.online.tableau.com www.csla-aapc.ca https://*.googleapis.com gstatic.com *.google.com  *.googleusercontent.com public.tableau.com data:");
                 await next();
             });

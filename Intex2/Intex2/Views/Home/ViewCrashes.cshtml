@@ -58,6 +58,7 @@
 <br />
 <br />
 <br />
+<!--This is for our filtering of the data. It allows to search by crash severity, city, and county.-->
 <div class="row text-center">
     <div class="col-1"></div>
     <form class="col-10">
@@ -79,11 +80,11 @@
         </select>
         <select asp-for="CrashSev">
             <option asp-for="CrashSev" value="0">Select Severity</option>
-            <option asp-for="CrashSev" value="1">1</option>
-            <option asp-for="CrashSev" value="2">2</option>
-            <option asp-for="CrashSev" value="3">3</option>
-            <option asp-for="CrashSev" value="4">4</option>
-            <option asp-for="CrashSev" value="5">5</option>
+            <option asp-for="CrashSev" value="1">1: No Injury</option>
+            <option asp-for="CrashSev" value="2">2: Possible Injury</option>
+            <option asp-for="CrashSev" value="3">3: Suspected Minor Injury</option>
+            <option asp-for="CrashSev" value="4">4: Suspected Major Injury</option>
+            <option asp-for="CrashSev" value="5">5: Fatality</option>
         </select>
         <button type="submit" class="btn btn-primary" formaction='@Url.Action("Filter")'>Filter</button>
     </form>
@@ -99,6 +100,7 @@
             <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
                 <thead>
                     <tr>
+                        <!-- Only if a user is signed in can they see the edit and delete functionality-->
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <th>Severity Model</th>
@@ -179,7 +181,7 @@
         </div>
         <div class="col-1"></div>
     </div>
-
+    <!--This is our pagination-->
     <div class="text-center">
         <div page-model="@Model.PageInfo" page-action="Filter" page-classes-enabled="true"
              page-class="btn" page-class-normal="btn-outline-primary"

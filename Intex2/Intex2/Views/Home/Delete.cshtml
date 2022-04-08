@@ -2,19 +2,20 @@
 
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<h2>Confirm Deletion</h2>
-<h3> Are you sure you want to yeet the record for @Model.crash_id?</h3>
-<form method="post" asp-controller="Home" asp-action="Delete">
-    <button type="submit" class="btn btn-secondary">Delete</button>
-    <a asp-controller="Home" asp-action="ViewCrashes" class="btn btn-primary">Cancel</a>
+<!--Delete confirmation page-->
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <h2>Confirm Deletion</h2>
+    <h3> Are you sure you want to yeet the record for @Model.crash_id?</h3>
+    <form method="post" asp-controller="Home" asp-action="Delete">
+        <button type="submit" class="btn btn-secondary">Delete</button>
+        <a asp-controller="Home" asp-action="ViewCrashes" class="btn btn-primary">Cancel</a>
 
-    <input type="hidden" asp-for="crash_id" />
-</form>
+        <input type="hidden" asp-for="crash_id" />
+    </form>
+</div>
 <br />
 <br />
 <br />
