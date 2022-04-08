@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Summary Page for" + Model.crash_id;
+}
+@model Crash
+
+<br />
+<br />
+<br />
+<br />
+
+
+
+<div class="container jumbotron">
+    <h4>
+        The crash in
+
+        <span style="text-transform: capitalize; text-decoration:underline;">@Model.county_name COUNTY, </span>
+
+        <span style="text-transform: capitalize; text-decoration:underline;">@Model.city</span>
+
+
+
+
+
+        on route @Model.route at milepoint @Model.milepoint involved:
+    </h4>
+    <ul>
+        @{
+
+
+
+
+            if (Model.work_zone_related == "true")
+            {
+                <li>Work zone</li>
+            }
+            if (Model.pedestrian_involved == "true")
+            {
+                <li>Pedestrian</li>
+            }
+            if (Model.bicyclist_involved == "true")
+            {
+                <li>Bicyclist</li>
+            }
+            if (Model.motorcycle_involved == "true")
+            {
+                <li>Motorcycle</li>
+            }
+            if (Model.improper_restraint == "true")
+            {
+                <li>Improper retraint</li>
+            }
+            if (Model.unrestrained == "true")
+            {
+                <li>No restraints present</li>
+            }
+            if (Model.dui == "true")
+            {
+                <li>Driving under the influence</li>
+            }
+            if (Model.intersection_related == "true")
+            {
+                <li>Intersection</li>
+            }
+            if (Model.wild_animal_related == "true")
+            {
+                <li>Wild animal</li>
+            }
+            if (Model.domestic_animal_related == "true")
+            {
+                <li>Domestic animal</li>
+            }
+            if (Model.overturn_rollover == "true")
+            {
+                <li>Rollover</li>
+            }
+            if (Model.commercial_motor_veh_involved == "true")
+            {
+                <li>Commercial vehicle</li>
+            }
+            if (Model.teenage_driver_involved == "true")
+            {
+                <li>Teenage driver</li>
+            }
+            if (Model.older_driver_involved == "true")
+            {
+                <li>Older driver</li>
+            }
+            if (Model.night_dark_condition == "true")
+            {
+                <li>Nighttime darkness</li>
+            }
+            if (Model.single_vehicle == "true")
+            {
+                <li>Single vehicle</li>
+            }
+            if (Model.distracted_driving == "true")
+            {
+                <li>Distracted driving</li>
+            }
+            if (Model.drowsy_driving == "true")
+            {
+                <li>Drowsy driving</li>
+            }
+            if (Model.roadway_departure == "true")
+            {
+                <li>Roadway departure</li>
+            }
+
+            if (Model.work_zone_related == "false" && Model.roadway_departure=="false" && Model.pedestrian_involved == "false" && Model.bicyclist_involved == "true" && Model.motorcycle_involved=="false" && Model.commercial_motor_veh_involved=="false" && Model.distracted_driving=="false" && Model.domestic_animal_related=="false" && Model.drowsy_driving=="false" && Model.dui=="false" && Model.improper_restraint=="false" && Model.intersection_related=="false" && Model.night_dark_condition=="false" && Model.older_driver_involved=="false" && Model.overturn_rollover=="false" && Model.single_vehicle=="false" && Model.teenage_driver_involved=="false" && Model.unrestrained=="false" && Model.wild_animal_related=="false")
+            {
+                <li> None of the constraints were involved in the accident. It was fairly minor!</li>
+            }
+
+        }
+    </ul>
+    <a asp-action="ViewCrashes">See All Crashes</a>
+</div>

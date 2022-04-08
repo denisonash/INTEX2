@@ -1,0 +1,282 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add an Incident";
+}
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<link href="~/css/form.css" rel="stylesheet" />
+@model Crash
+<br />
+<br />
+<br />
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-11 text-center">
+                <h3>Submit an incident</h3>
+                <p class="blue-text">Just answer a few questions<br> so we know everything we need to about the accident.</p>
+                <div>
+                    <h5 class="text-center mb-4">Powering our predictions and helping us educate Utah</h5>
+                    <div>
+                        <form class="form-accident" method="post">
+                            <div class="row">
+                                <div asp-validation-summary="All" style="color:red" class="col-md-12"></div>
+                            </div>
+                            <input type="hidden" value="@ViewBag.CrashId" asp-for="crash_id" />
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="crash_datetime">Date and Time:</label><input type="text" asp-for="crash_datetime" placeholder="" /></div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="route">Route:</label><input type="text" asp-for="route" /></div>
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="milepoint">Milepoint:</label><input type="text" asp-for="milepoint" /></div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="lat_utm_y">Latitude:</label><input type="text" asp-for="lat_utm_y" /></div>
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="long_utm_x">Longitude:</label><input type="text" asp-for="long_utm_x" /></div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="main_road_name">Main Road:</label><input type="text" asp-for="main_road_name" /></div>
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="city">City:</label><input type="text" asp-for="city" /></div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3" asp-for="crash_severity_id">Crash Severity:</label><input min="1" max="5" type="number" asp-for="crash_severity_id" /></div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="county_name" class="form-control-label px-3">County:</label>
+                                    <select asp-for="county_name">
+                                        <option value="-Select-">-Select-</option>
+                                        <option value="BEAVER">Beaver</option>
+                                        <option value="BOX ELDER">Box Elder</option>
+                                        <option value="CACHE">Cache</option>
+                                        <option value="CARBON">Carbon</option>
+                                        <option value="DAGGETT">Daggett</option>
+                                        <option value="DAVIS">Davis</option>
+                                        <option value="DUCHESNE">Duchesne</option>
+                                        <option value="EMERY">Emery</option>
+                                        <option value="GARFIELD">Garfield</option>
+                                        <option value="GRAND">Grand</option>
+                                        <option value="IRON">Iron</option>
+                                        <option value="JUAB">Juab</option>
+                                        <option value="KANE">Kane</option>
+                                        <option value="MILLARD">Millard</option>
+                                        <option value="MORGAN">Morgan</option>
+                                        <option value="PIUTE">Piute</option>
+                                        <option value="RICH">Rich</option>
+                                        <option value="SALT LAKE">Salt Lake</option>
+                                        <option value="SAN JUAN">San Juan</option>
+                                        <option value="SANPETE">Sanpete</option>
+                                        <option value="SEVIER">Sevier</option>
+                                        <option value="SUMMIT">Summit</option>
+                                        <option value="TOOELE">Tooele</option>
+                                        <option value="UINTAH">Uintah</option>
+                                        <option value="UTAH">Utah</option>
+                                        <option value="WASATCH">Wasatch</option>
+                                        <option value="WASHINGTON">Washington</option>
+                                        <option value="WAYNE">Wayne</option>
+                                        <option value="WEBER">Weber</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="work_zone_related" class="form-control-label px-3">Work Zone Related?</label>
+                                    <select asp-for="work_zone_related">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="pedestrian_involved" class="form-control-label px-3">Pedestrian Involved?</label>
+                                    <select asp-for="pedestrian_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="bicyclist_involved" class="form-control-label px-3">Bicycle Involved?</label>
+                                    <select asp-for="bicyclist_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="motorcycle_involved" class="form-control-label px-3">Motorcyle Involved?</label>
+                                    <select asp-for="motorcycle_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="improper_restraint" class="form-control-label px-3">Improper Restraint?</label>
+                                    <select asp-for="improper_restraint">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="unrestrained" class="form-control-label px-3">Unrestrained Passenger?</label>
+                                    <select asp-for="unrestrained">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="dui" class="form-control-label px-3">DUI</label>
+                                    <select asp-for="dui">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="intersection_related" class="form-control-label px-3">Intersection Related?</label>
+                                    <select asp-for="intersection_related">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="wild_animal_related" class="form-control-label px-3">Wild Animal Involved?</label>
+                                    <select asp-for="wild_animal_related">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="domestic_animal_related" class="form-control-label px-3">Domestic Animal Involved?</label>
+                                    <select asp-for="domestic_animal_related">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="overturn_rollover" class="form-control-label px-3">Overturn/Rollover Involved?</label>
+                                    <select asp-for="overturn_rollover">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="commercial_motor_veh_involved" class="form-control-label px-3">Commercial Vehicle Involved?</label>
+                                    <select asp-for="commercial_motor_veh_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="teenage_driver_involved" class="form-control-label px-3">Teenage Driver Involved?</label>
+                                    <select asp-for="teenage_driver_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="older_driver_involved" class="form-control-label px-3">Senior Driver Involved?</label>
+                                    <select asp-for="older_driver_involved">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="night_dark_condition" class="form-control-label px-3">Was the Crash at Night?</label>
+                                    <select asp-for="night_dark_condition">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="single_vehicle" class="form-control-label px-3">Single Vehicle Accident?</label>
+                                    <select asp-for="single_vehicle">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="distracted_driving" class="form-control-label px-3">Distracted Driving Involved?</label>
+                                    <select asp-for="distracted_driving">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="drowsy_driving" class="form-control-label px-3">Drowsy Driving Involved?</label>
+                                    <select asp-for="drowsy_driving">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label asp-for="roadway_departure" class="form-control-label px-3">Did a Car Leave the Road?</label>
+                                    <select asp-for="roadway_departure">
+                                        <option value="false">No</option>
+                                        <option value="true">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between text-center">
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-11 text-center">
+                <h3>You must be authorized to add an incident to the system. Please <a asp-area="Identity" asp-page="/Account/Login">log in.</a></h3>
+            </div>
+        </div>
+    </div>
+
+                }
+

@@ -1,3 +1,207 @@
-﻿
-@{
+﻿@{
+    ViewData["Title"] = "See Crash Statistics";
+}
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model CrashesViewModel
+
+
+<style nonce="rAnd0m">
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgb(176,224,230);
+    }
+    .single-page-header {
+        background-image: url("../../wwwroot/img/saul-flores-tyQkPhPCZhY-unsplash.jpg" );
+        background-size: cover;
+        padding: 140px 0 70px;
+        text-align: center;
+    }
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 48px;
+        transform: translate(-50%, -50%);
+    }
+
+    .w-auto {
+        width: auto !important;
+    }
+    .overflow-auto {
+        overflow: auto !important;
+    }
+    select {
+        width: 50%;
+        min-width: 15ch;
+        max-width: 20ch;
+        border: 1px solid var(--select-border);
+        border-radius: 0.50em;
+        padding: 0.25em 0.5em;
+        font-size: 1.0rem;
+        cursor: pointer;
+        line-height: 1.1;
+        background-color: #fff;
+    }
+</style>
+<div style="position:relative; text-align:center; color:white;">
+    <img src="https://www.csla-aapc.ca/sites/csla-aapc.ca/files/whatisla_0.jpg" alt="Snow" style="width:100%; height:400px">
+    <div class="centered">View Crash Data</div>
+</div>
+<br />
+<br />
+<br />
+<div class="row text-center">
+    <div class="col-1"></div>
+    <form class="col-10">
+
+        <select asp-for="CrashCity">
+            <option asp-for="CrashCity" value="">Select City</option>}
+            @foreach (string c in ViewBag.Cities)
+            {
+            <option asp-for="CrashCity" asp-route-city="@c" value="@c">@c</option>
+            }
+        </select>
+
+        <select asp-for="CrashCounty">
+            <option asp-for="CrashCounty" value="">Select County</option>
+            @foreach (string c in ViewBag.Counties)
+            {
+            <option asp-for="CrashCounty" value="@c">@c</option>
+            }
+        </select>
+        <select asp-for="CrashSev">
+            <option asp-for="CrashSev" value="0">Select Severity</option>
+            <option asp-for="CrashSev" value="1">1</option>
+            <option asp-for="CrashSev" value="2">2</option>
+            <option asp-for="CrashSev" value="3">3</option>
+            <option asp-for="CrashSev" value="4">4</option>
+            <option asp-for="CrashSev" value="5">5</option>
+        </select>
+        <button type="submit" class="btn btn-primary" formaction='@Url.Action("Filter")'>Filter</button>
+    </form>
+    <div class="col-1"></div>
+</div>
+<br />
+<br />
+@if (Model.Crashes.Count()>=1)
+{
+    <div class="container-fluid row">
+        <div class="col-1"></div>
+        <div class="col-10 overflow-auto">
+            <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+                <thead>
+                    <tr>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <th>Severity Model</th>
+                        }
+                        else
+                        {
+
+                        }
+                        <th>Crash ID</th>
+                        <th>Crash Datetime</th>
+                        <th>Route</th>
+                        <th>Milepoint</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Main Road</th>
+                        <th>City</th>
+                        <th>County</th>
+                        <th>Crash Severity</th>
+                        <th>Work Zone?</th>
+                        <th>Pedestrian?</th>
+                        <th>Bicycle?</th>
+                        <th>Motorcycle?</th>
+                        <th>Improper Restraint?</th>
+                        <th>Unrestrained?</th>
+                        <th>DUI></th>
+                        <th>Intersection?</th>
+                        <th>Wild Animal?</th>
+                        <th>Domestic Animal?</th>
+                        <th>Overturn/Rollover?</th>
+                        <th>Comm Vehicle?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model.Crashes)
+                    {
+                        <tr>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+
+                                <td class="text-center">
+                                    <a asp-action="Edit" asp-route-crashid="@c.crash_id" class="btn btn-success text-center">Edit</a>
+                                    <a asp-action="Delete" asp-route-crashid="@c.crash_id" class="btn btn-danger text-center">Delete</a>
+                                </td>
+                            }
+                            else
+                            {
+
+                            }
+
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.crash_id</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.crash_datetime</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.route</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.milepoint</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.lat_utm_y</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.long_utm_x</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.main_road_name</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.city</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.county_name</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.crash_severity_id</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.work_zone_related</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.pedestrian_involved</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.bicyclist_involved</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.motorcycle_involved</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.improper_restraint</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.unrestrained</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.dui</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.intersection_related</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.wild_animal_related</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.domestic_animal_related</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.overturn_rollover</a></td>
+                            <td class="text-center w-auto"><a asp-route-crashid="@c.crash_id" asp-route-city="@c.city" asp-route-county="@c.county_name" asp-route-csi="@c.crash_severity_id" asp-action="Summary">@c.commercial_motor_veh_involved</a></td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <div class="text-center">
+        <div page-model="@Model.PageInfo" page-action="Filter" page-classes-enabled="true"
+             page-class="btn" page-class-normal="btn-outline-primary"
+             page-class-selected="btn-primary" class="btn-group m-1">
+        </div>
+    </div>
+}
+else {
+<div class="text-center">
+    <span class="text-info text-center">There are no records for these search parameters. <a asp-action="ViewCrashes">Reload the page?</a></span>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
 }

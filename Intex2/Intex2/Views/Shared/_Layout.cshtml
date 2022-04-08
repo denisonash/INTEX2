@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!-->
 <html>
 <!--<![endif]-->
-<head>
+<head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Bingo One page parallax responsive HTML Template ">
 
@@ -18,24 +18,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/Car_icon_alone.png" />
 
     <!-- CSS
     ================================================== -->
     <!-- Themefisher Icon font -->
-    <link rel="stylesheet" href="~/plugins/themefisher-font/style.css">
+    <link rel="stylesheet" href="~/plugins/themefisher-font/style.css" runat="server" />
     <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="~/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/plugins/bootstrap/css/bootstrap.min.css" runat="server" />
     <!-- Lightbox.min css -->
-    <link rel="stylesheet" href="~/plugins/lightbox2/dist/css/lightbox.min.css">
+    <link rel="stylesheet" href="~/plugins/lightbox2/dist/css/lightbox.min.css" runat="server" />
     <!-- animation css -->
-    <link rel="stylesheet" href="~/plugins/animate/animate.css">
+    <link rel="stylesheet" href="~/plugins/animate/animate.css" />
     <!-- Slick Carousel -->
-    <link rel="stylesheet" href="~/plugins/slick/slick.css">
+    <link rel="stylesheet" href="~/plugins/slick/slick.css" runat="server" />
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="~/css/style.css">
+    <link href="~/lib/bootstrap/dist/plugins/bootstrap/css/._bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" runat="server" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" runat="server" />
 
-    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+
+    <!--Data Table Links-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/cr-1.5.5/date-1.1.2/fc-4.0.2/fh-3.2.2/kt-2.6.4/r-2.2.9/sc-2.0.5/sb-1.3.2/sp-2.0.0/datatables.min.css" runat="server" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/cr-1.5.5/date-1.1.2/fc-4.0.2/fh-3.2.2/kt-2.6.4/r-2.2.9/sc-2.0.5/sb-1.3.2/sp-2.0.0/datatables.min.js" runat="server"></script>
+
 </head>
 
 <body id="body">
@@ -59,16 +67,13 @@
     <!--
     Fixed Navigation
     ==================================== -->
-    <header class="navigation fixed-top">
-        <div class="container">
+    <header class="navigation fixed-top" style="background-color:white">
+        <div class="container" >
             <!-- main nav -->
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light" >
                 <!-- logo -->
                 <a class="navbar-brand logo" asp-controller="Home" asp-action="Index">
-                    <i class="fas fa-car-burst" style="color:white"></i>
-                    
-                    @*<img class="logo-default" src="C:\Users\noeli\OneDrive\Documents\IS Core\INTEX2\INTEXproject\Intex2\Intex2\wwwroot\img\logo.png" alt="logo" />
-                    <img class="logo-white" src="https://previews.123rf.com/images/vectorstockcompa…%A9-sur-fond-transparent-concept-logo-voiture.jpg" alt="logo" />*@
+                    <i class="fas fa-car-burst">Home</i>
                 </a>
                 <!-- /logo -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -79,45 +84,21 @@
                 <div class="collapse navbar-collapse" id="navigation">
                     <ul class="navbar-nav ml-auto text-center">
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Homepage
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="index.html">Homepage</a>
-                                <a class="dropdown-item" href="onepage-slider.html">Onepage</a>
-                                <a class="dropdown-item" href="onepage-text.html">Onepage 2</a>
-                            </div>
+                            <a class="nav-link text-info" asp-controller="Home" asp-action="Index">Homepage</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="about.html">About Us</a>
+                            <a class="nav-link text-info" asp-controller="Home" asp-action="ViewCrashes">Crash Data</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="service.html">Services</a>
+                            <a class="nav-link text-info" asp-controller="Home" asp-action="StatsBreakdown">Stats</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="portfolio.html">Portfolio</a>
+                            <a class="nav-link text-info" asp-controller="Home" asp-action="Story">Predictor</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="team.html">Team</a>
+                            <a class="nav-link text-info" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="pricing.html">Pricing</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Pages
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="404.html">404 Page</a>
-                                <a class="dropdown-item" href="blog.html">Blog Page</a>
-                                <a class="dropdown-item" href="single-post.html">Blog Single Page</a>
-                            </div>
-                        </li>
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
             </nav>
@@ -128,27 +109,27 @@
     End Fixed Navigation
     ==================================== -->
 
-        
- @RenderBody()
-       
 
+    @RenderBody()
+  
 
     <footer id="footer" class="bg-one">
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/af-2.3.7/b-2.2.2/cr-1.5.5/date-1.1.2/fc-4.0.2/fh-3.2.2/kt-2.6.4/r-2.2.9/sc-2.0.5/sb-1.3.2/sp-2.0.0/datatables.min.js"></script>
         <div class="top-footer">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <h3>about</h3>
-                        <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
+                        <p>We love educating the constituents of Utah about the dangers of driving and how they can avoid the sometimes fatal results.</p>
                     </div>
                     <!-- End of .col-sm-3 -->
 
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <ul>
                             <li><h3>Our Services</h3></li>
-                            <li><a href="#">Graphic Design</a></li>
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
+                            <li><a asp-action="Story">Predictor</a></li>
+                            <li><a asp-action="StatsBreakdown">In Depth Stats</a></li>
+                            <li><a asp-action="ViewCrashes">View All Incidents</a></li>
                         </ul>
                     </div>
                     <!-- End of .col-sm-3 -->
@@ -156,31 +137,18 @@
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <ul>
                             <li><h3>Quick Links</h3></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">FAQ’s</a></li>
-                            <li><a href="#">Badges</a></li>
+                            <li><a asp-action="Privacy">Privacy Policy</a></li>
                         </ul>
                     </div>
                     <!-- End of .col-sm-3 -->
-
-                    <div class="col-sm-3 col-md-3 col-lg-3">
-                        <ul>
-                            <li><h3>Connect with us Socially</h3></li>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Youtube</a></li>
-                            <li><a href="#">Pinterest</a></li>
-                        </ul>
-                    </div>
                     <!-- End of .col-sm-3 -->
 
                 </div>
             </div> <!-- end container -->
         </div>
         <div class="footer-bottom">
-            <h5>Copyright 2016. All rights reserved.</h5>
-            <h6>Design and Developed by <a href="">Themefisher</a></h6>
+            <h5>Copyright 2022. All rights reserved.</h5>
+            <h6>Design and Developed by <a href="">Group 1-4</a></h6>
         </div>
     </footer> <!-- end footer -->
     <!-- end Footer Area
@@ -214,5 +182,15 @@
     <!-- Custom js -->
     <script src="~/js/script.js"></script>
 
+    @RenderSection("Scripts", required: false)
+
 </body>
+
 </html>
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/customerDatatable.js"></script>
+}

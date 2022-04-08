@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CrashesViewModel
+<link href="~/css/dt.css" rel="stylesheet" />
+<script src="~/js/dt.js"></script>
+
+ <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+ <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <table id="mytable" class="table  table-hover table-responsive table-sm table-striped">
+            <thead>
+                <tr>
+                    <td class="text-center">Severity Model</td>
+                    <td class="text-center">CRASH_ID</td>
+                    <td class="text-center">CRASH_DATETIME</td>
+                    <td class="text-center">ROUTE</td>
+                    <td class="text-center">MILEPOINT</td>
+                    <td class="text-center">LATITUDE</td>
+                    <td class="text-center">LONGITUDE</td>
+                    <td class="text-center">MAIN_ROAD_NAME</td>
+                    <td class="text-center">CITY</td>
+                    <td class="text-center">COUNTY_NAME</td>
+                    <td class="text-center">PEDESTRIAN_INVOLVED</td>
+                    <td class="text-center">WORK_ZONE_RELATED</td>
+                    <td class="text-center">BICYCLIST_INVOLVED</td>
+                    <td class="text-center">MOTORCYCLE_INVOLVED</td>
+                    <td class="text-center">IMPROPER_RESTRAINT</td>
+                    <td class="text-center">UNRESTRAINED</td>
+                    <td class="text-center">CRASH_SEVERITY_ID</td>
+                    <td class="text-center">DUI</td>
+                    <td class="text-center">INTERSECTION_RELATED</td>
+                    <td class="text-center">WILD_ANIMAL_RELATED</td>
+                    <td class="text-center">DOMESTIC_ANIMAL_RELATED</td>
+                    <td class="text-center">OVERTURN_ROLLOVER</td>
+                    <td class="text-center">COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Crash c in ViewBag.crashes)
+                {
+                <tr>
+
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-crashid="@c.crash_id" class="btn btn-warning text-center">Edit</a>
+                        <a asp-action="Delete" asp-route-crashid="@c.crash_id" class="btn btn-warning text-center">Delete</a>
+                    </td>
+
+                    <td class="text-center">@c.crash_id</td>
+                    <td class="text-center">@c.crash_datetime</td>
+                    <td class="text-center">@c.route</td>
+                    <td class="text-center">@c.milepoint</td>
+                    <td class="text-center">@c.lat_utm_y</td>
+                    <td class="text-center">@c.long_utm_x</td>
+                    <td class="text-center">@c.main_road_name</td>
+                    <td class="text-center">@c.city</td>
+                    <td class="text-center">@c.county_name</td>
+                    <td class="text-center">@c.crash_severity_id</td>
+                    <td class="text-center">@c.work_zone_related</td>
+                    <td class="text-center">@c.pedestrian_involved</td>
+                    <td class="text-center">@c.bicyclist_involved</td>
+                    <td class="text-center">@c.motorcycle_involved</td>
+                    <td class="text-center">@c.improper_restraint</td>
+                    <td class="text-center">@c.unrestrained</td>
+                    <td class="text-center">@c.dui</td>
+                    <td class="text-center">@c.intersection_related</td>
+                    <td class="text-center">@c.wild_animal_related</td>
+                    <td class="text-center">@c.domestic_animal_related</td>
+                    <td class="text-center">@c.overturn_rollover</td>
+                    <td class="text-center">@c.commercial_motor_veh_involved</td>
+
+                </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>CRASH ID</th>
+                    <th>CRASH DATETIME</th>
+                    <th>ROUTE</th>
+                    <th>MILEPOINT</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDEX</th>
+                    <th>MAIN ROAD</th>
+                    <th>CITY</th>
+                    <th>COUNTY</th>
+                    <th>CRASH SEVERITY ID</th>
+                    <th>WORK ZONE RELATED</th>
+                    <th>PEDESTRIAN INVOLVED</th>
+                    <th>BICYCLIST INVOLVED</th>
+                    <th>MOTORCYCLE INVOLVED</th>
+                    <th>IMPROPER RESTRAINT</th>
+                    <th>UNRESTRAINED</th>
+                    <th>DUI</th>
+                    <th>INTERSECTION RELATED</th>
+                    <th>WILD_ANIMAL RELATED</th>
+                    <th>DOMESTIC ANIMAL RELATED</th>
+                    <th>OVERTURN ROLLOVER</th>
+                    <th>COMM VEHICLE INVOLVED</th>
+                </tr>
+            </tfoot>
+
+
+        </table>
+
+
+    </div>
+</div>

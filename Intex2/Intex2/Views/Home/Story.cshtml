@@ -1,0 +1,212 @@
+﻿@{ ViewData["Title"] = "Simulation"; }
+
+@model CrashData
+<link href="~/css/form.css" rel="stylesheet" />
+
+<br />
+<br />
+<br />
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 text-center">
+            <h3>Simulate an accident</h3>
+            <p class="blue-text">
+                Welcome to the UT Drive Safer simulator!<br />
+                Driving safely is extremely important to us, this simulator provides a tool for Utahns to view how their actions will affect their lives and others’.
+            </p>
+            <div>
+                <h5 class="text-center mb-4">Powering our predictions and helping us educate Utah</h5>
+                <div>
+                    <form class="form-accident" method="post">
+                        <div asp-validation-summary="All"></div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label asp-for="teenage_driver" class="form-control-label px-3">Are you a teenager?</label>
+                                <select name="age" id="age" asp-for="teenage_driver">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label asp-for="older_driver_involved" class="form-control-label px-3">Are you a 64+ driver?</label>
+                                <select name="age" id="age" asp-for="older_driver_involved">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <br />
+                        <br />
+                        <label asp-for="city_Other" class="form-control-label px-3">You are planning on making a short trip to visit a friend, where does your friend live?</label>
+
+                        <div class="form-group col-sm-12 flex-column d-flex text-center ">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <select asp-for="city_Other" class="col-sm-6">
+                                    <option value="0">Salt Lake City</option>
+                                    <option value="0">West Valley City</option>
+                                    <option value="1">Other</option>
+                                </select>
+                                <div class="col-sm-3"></div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group col-sm-12 flex-column d-flex">
+                            <label class="form-control-label px-3">As you are planning your trip you have to decide to visit during the day or during the evening, which do you pick?</label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3" asp-for="night_dark_condition">Day</label>
+                                    <input type="radio" name="Time" asp-for="night_dark_condition" value="0" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3" asp-for="night_dark_condition">Night</label>
+                                    <input type="radio" name="Time" asp-for="night_dark_condition" value="1" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group col-sm-12 flex-column d-flex">
+                            <label class="form-control-label px-3">
+                                The next day, you are invited to a party before you have to leave to see your friend. When you get there, you are offered a drink with alcohol in it.
+                                Knowing that you have to leave to drive soon, do you turn down the offer, or accept and drive while impaired?
+                            </label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3">Accept</label>
+                                    <input type="radio" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3">Decline</label>
+                                    <input type="radio" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group col-sm-12 flex-column d-flex">
+                            <label class="form-control-label px-3">
+                                You realize that you lost track of time and need to leave right away.
+                                As you are getting in your car in a hurry, do you forget to put your seat belt on?
+                            </label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3">No Seatbelt</label>
+                                    <input type="radio" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-control-label px-3">Seatbelt</label>
+                                    <input type="radio" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <label class="form-control-label px-3">As you are traveling, you are involved in an accident, the following questions will collect information about the accident.</label>
+                        <br />
+                        <div class="row">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label asp-for="bicyclist_involved" class="form-control-label px-3">Was a bicyclist involved in the accident?</label>
+                                <select name="age" id="age" asp-for="bicyclist_involved">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label asp-for="motorcycle_involved" class="form-control-label px-3">Was a motorcycle involved in the accident?</label>
+                                <select name="age" id="age" asp-for="motorcycle_involved">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Was a pedestrian involved in the accident?</label>
+                                <select asp-for="pedestrian_involved">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Were multiple vehicles involved?</label>
+                                <select asp-for="single_vehicle">
+                                    <option value="1">No</option>
+                                    <option value="0">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <br />
+                        <label class="form-control-label px-3">In addition to these individuals, you will also encounter animals. These also require additional caution. Check any that are involved in the accident…</label>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="form-group col-sm-12 flex-column d-flex">
+                            <label class="form-control-label px-3">In addition to these individuals, you will also encounter animals. These also require additional caution. Check any that are involved in the accident…</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="form-control-label px-3">No Animal</label>
+                                    <input type="checkbox" /><br />
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-control-label px-3">Domesticated Animal</label>
+                                    <input type="checkbox" /><br />
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-control-label px-3">Wild Animal</label>
+                                    <input type="checkbox" /><br />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Did it happen in or near an intersection?</label>
+                                <select asp-for="intersection_related">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Did a vehicle flip over?</label>
+                                <select asp-for="overturn_rollover_true">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Did a vehicle leave the road?</label>
+                                <select asp-for="roadway_departure">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-primary">Simulate Accident</button>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
